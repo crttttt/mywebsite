@@ -1,0 +1,522 @@
+/* =========================================
+   HOME.CSS — Styles page principale
+   Quatuor Qu4tre à 4 — Version Sombre
+   ========================================= */
+
+/* ── Sections communes ── */
+section {
+  padding: 110px 60px;
+}
+
+/* ─────────────────────────────────────
+   HERO
+───────────────────────────────────── */
+#hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('../images/groupe-2.jpg') center center / cover no-repeat;
+  animation: zoomOut 12s ease-out forwards;
+}
+
+@keyframes zoomOut {
+  from { transform: scale(1.1); }
+  to   { transform: scale(1.02); }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(5,5,5,0.15) 0%,
+    rgba(5,5,5,0.05) 35%,
+    rgba(5,5,5,0.6) 75%,
+    rgba(5,5,5,1) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1.4s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 1s 0.3s ease both;
+}
+
+.hero-logo-img {
+  width: min(560px, 85vw);
+  opacity: 0;
+  animation: fadeUp 1s 0.6s ease both;
+  filter: drop-shadow(0 0 40px rgba(201,169,110,0.25));
+}
+
+.hero-tagline {
+  margin-top: 24px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--gold-light);
+  letter-spacing: 2px;
+  opacity: 0;
+  animation: fadeUp 1s 0.9s ease both;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: fadeUp 1s 1.5s ease both;
+}
+
+.hero-scroll span {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.2); }
+}
+
+/* ─────────────────────────────────────
+   PRÉSENTATION
+───────────────────────────────────── */
+#presentation {
+  background: var(--dark);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.pres-text p {
+  font-size: 16px;
+  line-height: 1.95;
+  color: rgba(245,240,232,0.78);
+  margin-bottom: 20px;
+}
+
+.pres-text p strong {
+  color: var(--gold-light);
+  font-weight: 400;
+}
+
+.pres-img {
+  position: relative;
+}
+
+.pres-img img {
+  width: 100%;
+  border: 1px solid rgba(201,169,110,0.2);
+}
+
+.pres-img-frame {
+  position: absolute;
+  top: -12px; right: -12px;
+  width: 100%; height: 100%;
+  border: 1px solid rgba(201,169,110,0.3);
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────
+   MEMBRES
+───────────────────────────────────── */
+#membres {
+  background: var(--black);
+  text-align: center;
+}
+
+.membres-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+
+.membre-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+}
+
+.membre-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.8s ease;
+  filter: grayscale(20%);
+}
+
+.membre-card:hover img {
+  transform: scale(1.06);
+  filter: grayscale(0%);
+}
+
+.membre-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5,5,5,0.92) 0%, transparent 55%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px 24px;
+  transition: background 0.4s;
+}
+
+.membre-card:hover .membre-overlay {
+  background: linear-gradient(to top, rgba(5,5,5,0.96) 0%, rgba(5,5,5,0.2) 55%);
+}
+
+.membre-name {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.membre-instrument {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--gold);
+}
+
+/* ─────────────────────────────────────
+   INSTRUMENTS
+───────────────────────────────────── */
+#instruments {
+  background: var(--dark2);
+  position: relative;
+  overflow: hidden;
+}
+
+#instruments::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.instruments-header {
+  max-width: 600px;
+  margin-bottom: 60px;
+}
+
+.instruments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.instrument-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,169,110,0.15);
+  padding: 36px 30px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s, transform 0.4s;
+}
+
+.instrument-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.5s ease;
+}
+
+.instrument-card:hover::after  { width: 100%; }
+.instrument-card:hover {
+  border-color: rgba(201,169,110,0.4);
+  transform: translateY(-4px);
+}
+
+.instrument-model {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.instrument-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.instrument-player {
+  font-size: 13px;
+  color: rgba(245,240,232,0.55);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.instrument-link {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(201,169,110,0.4);
+  padding-bottom: 2px;
+  transition: border-color 0.3s;
+}
+
+.instrument-link:hover {
+  border-color: var(--gold);
+}
+
+/* ─────────────────────────────────────
+   GALERIE
+───────────────────────────────────── */
+#galerie {
+  background: var(--black);
+  padding: 110px 0;
+}
+
+#galerie .section-header {
+  padding: 0 60px;
+  margin-bottom: 50px;
+}
+
+.galerie-strip {
+  display: flex;
+  gap: 3px;
+  overflow-x: auto;
+  padding: 0 60px;
+  scrollbar-width: none;
+}
+
+.galerie-strip::-webkit-scrollbar { display: none; }
+
+.galerie-item {
+  flex-shrink: 0;
+  width: 340px;
+  height: 420px;
+  overflow: hidden;
+}
+
+.galerie-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.7s ease;
+}
+
+.galerie-item:hover img {
+  transform: scale(1.07);
+}
+
+/* ─────────────────────────────────────
+   FESTIVALS
+───────────────────────────────────── */
+#festivals {
+  background: var(--dark);
+  text-align: center;
+}
+
+.festivals-intro {
+  max-width: 650px;
+  margin: 0 auto 60px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: rgba(245,240,232,0.75);
+  line-height: 1.8;
+}
+
+.festivals-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.festival-pill {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  border: 1px solid rgba(201,169,110,0.3);
+  padding: 10px 22px;
+  transition: background 0.3s, border-color 0.3s;
+  cursor: default;
+}
+
+.festival-pill:hover {
+  background: rgba(201,169,110,0.1);
+  border-color: rgba(201,169,110,0.6);
+}
+
+.festival-note {
+  margin-top: 50px;
+  padding-top: 50px;
+  border-top: 1px solid var(--line);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: rgba(245,240,232,0.65);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.festival-note strong {
+  color: var(--gold-light);
+  font-weight: 400;
+}
+
+/* ─────────────────────────────────────
+   CONTACT
+───────────────────────────────────── */
+#contact {
+  background: var(--black);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: center;
+}
+
+.contact-text p {
+  font-size: 15px;
+  color: rgba(245,240,232,0.65);
+  line-height: 1.9;
+  margin-bottom: 36px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.contact-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  transition: opacity 0.3s;
+}
+
+.contact-links a:hover { opacity: 0.7; }
+
+.social-row {
+  display: flex;
+  gap: 14px;
+}
+
+.social-row a {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 20px;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.social-row a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.courtois-badge {
+  margin-top: 32px;
+  padding: 16px 22px;
+  border: 1px solid rgba(201,169,110,0.25);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.courtois-badge .badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.courtois-badge p {
+  font-size: 12px;
+  color: rgba(245,240,232,0.6);
+  line-height: 1.7;
+}
+
+.courtois-badge a {
+  color: var(--gold);
+}
+
+.contact-photo img {
+  width: 100%;
+  filter: grayscale(15%);
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  #presentation      { grid-template-columns: 1fr; gap: 40px; }
+  .membres-grid      { grid-template-columns: repeat(2, 1fr); }
+  .instruments-grid  { grid-template-columns: 1fr; }
+  #contact           { grid-template-columns: 1fr; gap: 40px; }
+  #galerie .section-header { padding: 0 24px; }
+  .galerie-strip     { padding: 0 24px; }
+}
