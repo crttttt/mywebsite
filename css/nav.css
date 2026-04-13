@@ -1,0 +1,134 @@
+/* =========================================
+   NAV.CSS — Navigation fixe
+   Quatuor Qu4tre à 4 — Version Sombre
+   ========================================= */
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 60px;
+  background: linear-gradient(to bottom, rgba(5,5,5,0.95) 0%, transparent 100%);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+nav.scrolled {
+  background: rgba(5, 5, 5, 0.97);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 42px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white);
+  opacity: 0.75;
+  transition: opacity 0.3s, color 0.3s;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  color: var(--gold);
+}
+
+.nav-links a.active {
+  color: var(--gold);
+  opacity: 1;
+}
+
+/* ── Footer ── */
+footer {
+  background: var(--dark2);
+  border-top: 1px solid var(--line);
+  padding: 36px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(245, 240, 232, 0.35);
+  text-transform: uppercase;
+}
+
+footer a {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  transition: opacity 0.3s;
+}
+
+footer a:hover {
+  opacity: 0.7;
+}
+
+/* ── Bouton mobile Actualités ── */
+.nav-mobile-actu {
+  display: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  nav {
+    padding: 16px 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-mobile-actu {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    padding: 9px 16px;
+    border-radius: 2px;
+    transition: background 0.3s, opacity 0.3s;
+    white-space: nowrap;
+  }
+
+  .nav-mobile-actu:hover {
+    background: var(--gold-light);
+  }
+
+  .nav-mobile-actu::before {
+    content: '◆';
+    font-size: 7px;
+    opacity: 0.7;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    padding: 28px 24px;
+  }
+}
